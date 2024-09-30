@@ -14,6 +14,7 @@ fn main() -> Result<()> {
     let (tx, rx) = mpsc::channel();
     for i in 0..NUM_PRODUCERS {
         let tx = tx.clone();
+
         thread::spawn(move || producer(i, tx));
     }
     drop(tx);
