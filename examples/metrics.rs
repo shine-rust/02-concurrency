@@ -9,7 +9,7 @@ const M: usize = 4;
 
 fn main() -> Result<()> {
     let metrics = Metrics::default();
-    println!("metrics: {:?}", metrics.snapshot());
+    println!("{}", metrics);
 
     for idx in 0..N {
         task_worker(idx, metrics.clone())?;
@@ -21,7 +21,7 @@ fn main() -> Result<()> {
 
     loop {
         thread::sleep(Duration::from_secs(1));
-        println!("metrics: {:?}", metrics.snapshot());
+        println!("{}", metrics);
     }
 }
 
